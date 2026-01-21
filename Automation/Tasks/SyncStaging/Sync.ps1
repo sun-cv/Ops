@@ -1,4 +1,3 @@
-
 # ----------------------------
 # Config
 # ----------------------------
@@ -13,6 +12,29 @@ $sourceFolders = @(
 $syncRoot = "Z:\"
 $logFile  = "C:\Ops\Logs\Automation\Tasks\GFS\SyncStaging.log"
 $errorLog = "C:\Ops\Logs\Automation\Tasks\GFS\SyncStagingErrors.log"
+
+$excludeFiles = @(
+    "*.tmp",
+    "*.temp",
+    "*.lock",
+    "*Lockfile",
+    "FSTimeGet-*",
+    "*.pdb",
+    "thumbs.db",
+    "desktop.ini",
+    "~$*"
+)
+
+$excludeDirs = @(
+    "Temp",
+    "obj",
+    "bin",
+    ".vs",
+    "node_modules",
+    ".vscode",
+    "Build",
+    "Builds"
+)
 
 
 $logDir = Split-Path $logFile -Parent
@@ -58,15 +80,28 @@ function Invoke-Robocopy($source, $dest, $folderName)
         $source,
         $dest,
         "/MIR",
-        "/R:1",
-        "/W:1",
+        "/R:3",
+        "/W:5",
         "/FFT",
+        "/b",
         "/Z",
         "/XA:S",
         "/NP",
         "/LOG:$tempLog",
         "/V"
     )
+    
+    # Add file exclusions
+    if ($excludeFiles.Count -gt 0) {
+        $robocopyArgs += "/XF"
+        $robocopyArgs += $excludeFiles
+    }
+    
+    # Add directory exclusions
+    if ($excludeDirs.Count -gt 0) {
+        $robocopyArgs += "/XD"
+        $robocopyArgs += $excludeDirs
+    }
     
     $output   = robocopy @robocopyArgs 2>&1
     $exitCode = $LASTEXITCODE
