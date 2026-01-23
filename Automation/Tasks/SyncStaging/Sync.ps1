@@ -84,7 +84,6 @@ function Invoke-Robocopy($source, $dest, $folderName)
         "/W:5",
         "/FFT",
         "/b",
-        "/Z",
         "/XA:S",
         "/NP",
         "/LOG:$tempLog",

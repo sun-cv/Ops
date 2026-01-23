@@ -73,13 +73,12 @@ function Invoke-Robocopy($source, $dest)
         $source,
         $dest,
         "/E",
-        "/R:1",
-        "/W:1",
+        "/R:3",
+        "/W:5",
         "/FFT",
-        "/Z",
         "/XA:S",
         "/NP",
-        "/UNILOG+:$logFile"
+        "/LOG+:$logFile"
     )
     
     if ($excludeDirs.Count -gt 0) 
@@ -162,8 +161,7 @@ function Remove-OldBackups($path, $keepCount)
             Where-Object { $_.Name -match '^\d{4}-' } |
             Sort-Object Name -Descending |
             Select-Object -Skip $keepCount |
-            ForEach-Object 
-            {
+            ForEach-Object {
                 Write-Host "  Removing old backup: $($_.Name)" -ForegroundColor DarkGray
                 Remove-Item $_.FullName -Recurse -Force
             }
@@ -300,3 +298,7 @@ Remove-OldBackups "$backupRoot\Yearly"  $maxYearly
 
 Write-Host ""
 Write-Host "=== GFS Backup complete! ===" -ForegroundColor Green
+
+Get-Date | Out-File "C:\Ops\Logs\Automation\Tasks\GFS\COMPLETED.txt" -Force
+
+exit 0
