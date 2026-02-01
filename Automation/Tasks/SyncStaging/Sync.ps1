@@ -22,7 +22,9 @@ $excludeFiles = @(
     "*.pdb",
     "thumbs.db",
     "desktop.ini",
-    "~$*"
+    "~$*",
+    "*.db",
+    "*.log"
 )
 
 $excludeDirs = @(
@@ -33,9 +35,9 @@ $excludeDirs = @(
     "node_modules",
     ".vscode",
     "Build",
-    "Builds"
+    "Builds",
+    "Logs"
 )
-
 
 $logDir = Split-Path $logFile -Parent
 if (-not (Test-Path $logDir)) 
@@ -53,8 +55,6 @@ if (-not (Test-Path $logDir))
     }
 }
 
-
-
 try 
 {
     "=== Sync started: $(Get-Date) ===" | Out-File -FilePath $logFile -Append -ErrorAction Stop
@@ -66,11 +66,11 @@ catch
     exit 1
 }
 
-# ----------------------------
-# Pre-flight checks
-# ----------------------------
-
 "=== Sync Errors - $(Get-Date) ===" | Out-File -FilePath $errorLog
+
+# ----------------------------
+# Functions
+# ----------------------------
 
 function Invoke-Robocopy($source, $dest, $folderName) 
 {
@@ -80,10 +80,9 @@ function Invoke-Robocopy($source, $dest, $folderName)
         $source,
         $dest,
         "/MIR",
-        "/R:3",
-        "/W:5",
+        "/R:0",
+        "/W:0",
         "/FFT",
-        "/b",
         "/XA:S",
         "/NP",
         "/LOG:$tempLog",
@@ -128,6 +127,10 @@ function Invoke-Robocopy($source, $dest, $folderName)
     
     return $exitCode
 }
+
+# ----------------------------
+# Main Sync Loop
+# ----------------------------
 
 $now = Get-Date
 Write-Host "=== Sync started at $($now.ToString('yyyy-MM-dd HH:mm:ss')) ===" -ForegroundColor Cyan
