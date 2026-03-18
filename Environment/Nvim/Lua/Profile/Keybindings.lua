@@ -1,0 +1,78 @@
+
+
+
+local keymap    = require("which-key")
+local harpoon   = require("harpoon")
+local oil       = require("oil")
+
+-- General
+vim.keymap.set("n", "<Esc>", 	"<cmd>nohlsearch<cr>", 	    { desc = "Exit highlight"	    })
+vim.keymap.set("i", "jj", 	    "<esc>", 	                { desc = "Exit insert"  	    })
+
+-- Window
+keymap.add({ "<leader>w", group = "Window" })
+vim.keymap.set("n", "<leader>wh", "<C-w>h", 				{ desc = "Move to left split"   })
+vim.keymap.set("n", "<leader>wl", "<C-w>l", 				{ desc = "Move to right split"  })
+vim.keymap.set("n", "<leader>wj", "<C-w>j", 			    { desc = "Move to lower split"  })
+vim.keymap.set("n", "<leader>wk", "<C-w>k", 			    { desc = "Move to upper split"  })
+vim.keymap.set("n", "<leader>wv", "<cmd>vsp<cr>",           { desc = "Split vertical"       })
+vim.keymap.set("n", "<leader>wd", "<cmd>sp<cr>",            { desc = "Split horizontal"     })
+vim.keymap.set("n", "<leader>wx", "<cmd>close<cr>",         { desc = "Close split"          })
+
+-- Buffer
+keymap.add({ "<leader>b", group = "Buffer" })
+vim.keymap.set("n", "<Tab>",      "<cmd>bnext<cr>",         { desc = "Next buffer"          })
+vim.keymap.set("n", "<S-Tab>",    "<cmd>bprev<cr>",     	{ desc = "Prev buffer"          })
+vim.keymap.set("n", "<leader>bb", "<cmd>BufferClose<cr>",   { desc = "Close buffer"         })
+vim.keymap.set("n", "<leader>bd", function() vim.cmd("Alpha") end, { desc = "Dashboard" } )
+
+-- Harpoon
+keymap.add({ "<leaderh>", group = "harpoon" })
+vim.keymap.set("n", "<leader>ha",  function() harpoon:list():add() end,                          { desc = "Add to harpoon"  })
+vim.keymap.set("n", "<leader>hm",  function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,  { desc = "Harpoon menu"    })
+vim.keymap.set("n", "<leader>h1",  function() harpoon:list():select(1) end,                      { desc = "Harpoon file 1"  })
+vim.keymap.set("n", "<leader>h2",  function() harpoon:list():select(2) end,                      { desc = "Harpoon file 2"  })
+vim.keymap.set("n", "<leader>h3",  function() harpoon:list():select(3) end,                      { desc = "Harpoon file 3"  })
+vim.keymap.set("n", "<leader>h4",  function() harpoon:list():select(4) end,                      { desc = "Harpoon file 4"  })
+vim.keymap.set("n", "<leader>h5",  function() harpoon:list():select(5) end,                      { desc = "Harpoon file 5"  })
+
+-- Find
+keymap.add({ "<leader>f", group = "Find"})
+vim.keymap.set("n", "ff",   "/",                                    { desc = "Search file"          })
+vim.keymap.set("n", "<leader>ff",  "<cmd>Telescope find_files<cr>", { desc = "Find files"           })
+vim.keymap.set("n", "<leader>fg",  "<cmd>Telescope live_grep<cr>",  { desc = "Live grep"            })
+vim.keymap.set("n", "<leader>fd",   function() vim.cmd("cd " .. require("oil").get_current_dir()) end, { desc = "CD to current oil directory"})
+
+-- File tree
+vim.keymap.set("n", "<leader>t",    oil.open,                       { desc = "Open file explorer"   })
+
+-- Lsp
+vim.keymap.set("n", "<leader>d",    vim.lsp.buf.definition,         { desc = "Definition"  })
+vim.keymap.set("n", "<leader>h",    vim.lsp.buf.hover,              { desc = "Hover"       })
+vim.keymap.set("n", "<leader>rn",   vim.lsp.buf.rename,             { desc = "Rename"      })
+vim.keymap.set("n", "<leader>a",    vim.lsp.buf.code_action,        { desc = "Code action" })
+
+-- Cursor
+keymap.add({ "<leader>c", group = "Cursor" })
+vim.keymap.set("n", "<leader>cj",   "<Plug>(VM-Add-Cursor-Down)",   { desc = "Add cursor down" 						})
+vim.keymap.set("n", "<leader>ck",   "<Plug>(VM-Add-Cursor-Up)",     { desc = "Add cursor up"   						})
+vim.keymap.set("n", "<leader>cv",   '<C-v>',                        { desc = 'Visual block mode' })
+
+-- Selection movement
+vim.keymap.set("v", "<S-j>",        ":m '>+1<cr>gv=gv",             { desc = "Move selection down", silent = true 	})
+vim.keymap.set("v", "<S-k>",        ":m '<-2<cr>gv=gv",             { desc = "Move selection up",   silent = true 	})
+
+-- Error handling
+keymap.add({ "<leader>e", group = "Errors" })
+vim.keymap.set("n", "<leader>ee",  vim.diagnostic.open_float,                           { desc = "Show error"           })
+vim.keymap.set("n", "<leader>ej",  function() vim.diagnostic.jump({ count = -1 }) end,  { desc = "Previous diagnostic"  })
+vim.keymap.set("n", "<leader>ek",  function() vim.diagnostic.jump({ count =  1 }) end,  { desc = "Next diagnostic"      })
+
+-- Undo
+keymap.add({ "<leader>u", group = "Undo" })
+vim.keymap.set("n", "<leader>uh", "<cmd>UndotreeToggle<cr>",        { desc = "Undo tree" })
+
+-- Terminal
+vim.keymap.set("n", "<leader>jj", "<cmd>ToggleTerm<cr>",                 { desc = "Toggle terminal" })
+vim.keymap.set("n", "<leader>jd", function() for _, term in ipairs(require("toggleterm.terminal").get_all()) do term:send("cd " .. require("oil").get_current_dir()) end end, { desc = "CD to terminal directory" })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>",                         { desc = "Exit terminal mode" })
