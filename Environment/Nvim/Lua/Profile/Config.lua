@@ -31,4 +31,4 @@ vim.g.undotree_SplitWidth = 40
 vim.g.undotree_SetFocusWhenToggle = 1
 
 vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#ffb454" })
-
+vim.api.nvim_create_autocmd("TextYankPost", {callback = function() vim.highlight.on_yank() end })
