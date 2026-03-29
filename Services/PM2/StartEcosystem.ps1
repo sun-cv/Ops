@@ -1,6 +1,6 @@
 Write-Host "Starting PM2 Ecosystem..." -ForegroundColor Green
 
-Set-Location "C:\Ops\Services\PM2"
+Set-Location "C:\sun\ops\services\PM2"
 
 pm2 start ecosystem.config.js
 pm2 save

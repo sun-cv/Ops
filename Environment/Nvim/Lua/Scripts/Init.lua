@@ -1,3 +1,3 @@
 
 
-require("Scripts.AutoSave")
+require("scripts.AutoSave")

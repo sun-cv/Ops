@@ -2,10 +2,9 @@
 
 return {
     'brenoprata10/nvim-highlight-colors',
-
-    opts =
-    {
+    opts = {
         render = "virtual",
-        virtual_symbol = ''
-    }
+        virtual_symbol = '󱓻',
+        enabled = false,
+    },
 }

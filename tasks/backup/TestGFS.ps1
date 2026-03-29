@@ -12,16 +12,16 @@ Write-Host ""
 # Config
 # ----------------------------
 $sourceFolders = @(
-    "C:\Users\sun\Files",
-    "C:\Dev",
-    "C:\Ops",
-    "C:\Backups"
+    "C:\sun\files",
+    "C:\sun\dev",
+    "C:\sun\ops",
+    "C:\sun\backups"
 )
 
 $mirrorRoot     = "Z:\"
 $backupRoot     = "X:\Backups"
 
-$logFile = "C:\Logs\Tasks\GFSBackup\BackupTest.log"
+$logFile = "C:\sun\logs\tasks\GFSBackup\BackupTest.log"
 
 # ----------------------------
 # Pre-flight checks

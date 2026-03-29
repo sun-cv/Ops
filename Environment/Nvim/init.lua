@@ -1,9 +1,8 @@
 
 
+require("bootstrap.init")
+require("settings.init")
+require("scripts.init")
 
-require("Bootstrap.Init")
-require("Settings.Init")
-require("Scripts.Init")
-
-require("Profile")
+require("profile")
 

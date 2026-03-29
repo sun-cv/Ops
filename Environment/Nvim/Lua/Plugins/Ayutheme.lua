@@ -30,16 +30,38 @@ return {
                 Cursor                      = { bg = '#ffffff', fg = '#171717'  },
                 lCursor                     = { bg = '#ffffff', fg = '#171717'  },
                 CursorIM                    = { bg = '#ffffff', fg = '#171717'  },
-                BufferTabpageFill           = { bg = "None"                     },
-                BufferCurrent               = { bg = "None"                 },
-                BufferCurrentMod            = { bg = "None"                     },
-                BufferVisible               = { bg = "None"                     },
-                BufferVisibleMod            = { bg = "None"                     },
-                BufferInactive              = { bg = "None"                     },
-                BufferInactiveMod           = { bg = "None"                     },
-                TabLine                     = { bg = "None"                     },
-                TabLineFill                 = { bg = "None"                     },
-                TabLineSel                  = { bg = "None"                     },
+
+                -- Current (active) buffer
+                BufferCurrent               = { bg = "None", fg = "#cbccc6" },
+                BufferCurrentIcon           = { bg = "None", fg = "#FFB454" },
+                BufferCurrentMod            = { bg = "None", fg = "#f28779" },  -- unsaved, active
+                BufferCurrentModIcon        = { bg = "None", fg = "#f28779" },
+                BufferCurrentBtn            = { bg = "None", fg = "#5A6378" },
+                BufferCurrentSign           = { bg = "None", fg = "#ffcc66" },
+                BufferCurrentTarget         = { bg = "None", fg = "#ffcc66" },  -- jump letter
+
+                -- Visible (in split, not focused)
+                BufferVisible               = { bg = "None", fg = "#cbccc6" },
+                BufferVisibleIcon           = { bg = "None", fg = "#FFB454" },
+                BufferVisibleMod            = { bg = "None", fg = "#5A6378" },
+                BufferVisibleSign           = { bg = "None", fg = "#5A6378" },
+                BufferVisibleTarget         = { bg = "None", fg = "#ffcc66" },
+
+                -- Inactive
+                BufferInactive              = { bg = "None", fg = "#5A6378" },
+                BufferInactiveIcon          = { bg = "None", fg = "#5A6378" },
+                BufferInactiveMod           = { bg = "None", fg = "#5A6378" },
+                BufferInactiveSign          = { bg = "None", fg = "#5A6378" },
+                BufferInactiveTarget        = { bg = "None", fg = "#ffcc66" },
+
+                -- Special
+                BufferTabpageFill           = { bg = "None" },
+                BufferTabpages              = { bg = "None", fg = "#5A6378" },
+                BufferTabpagesSep           = { bg = "None", fg = "#5A6378" },
+                BufferScrollArrow           = { bg = "None", fg = "#59C2FF" },
+
+                TabLineFill                 = { bg = "None" },
+                TabLine                     = { bg = "None" },
             },
         })
         require('ayu').colorscheme()

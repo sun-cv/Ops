@@ -1,5 +1,5 @@
 
 
 
-require("Profile.Leader")
-require("Bootstrap.Lazy.Lazy")
+require("profile.Leader")
+require("bootstrap.lazy.lazy")

@@ -1,0 +1,144 @@
+#
+#
+#
+# scan_timeout                = 100
+# command_timeout             = 300
+# add_newline                 = true
+#
+#
+# palette                     = "ayu_dark"
+#
+#
+# format = """
+# $env_var$character $directory \u001b7\
+# $fill $git_status[](fg:black bg:amber)[  ](fg:black bg:amber)[](fg:amber bg:blue)${custom.git_branch}\
+# \u001b8\
+# """
+#
+#
+#
+# [line_break] 
+# disabled                    = true
+#
+# [fill]
+# symbol                      = " "
+#
+# [directory]
+# style                       = "white"
+# format                      = "[$path]($style)[](white)"
+# truncation_length           = 3
+# truncate_to_repo            = false
+# use_logical_path            = true
+#
+# [directory.substitutions]
+# # "C:/sun/dev"                = " "
+# # "C:/sun/ops"                = " " 
+# # "C:/sun/files/assets"       = "files\\"
+# # "C:/sun/files/collections"  = "files\\"
+# # "C:/sun/files/documents"    = "files\\󰈙"
+# # "C:/sun/files/downloads"    = "files\\"
+# # "C:/sun/files/games"        = "files\\"
+# # "C:/sun/files/music"        = "files\\"
+# # "C:/sun/files/notes"        = "files\\"
+# # "C:/sun/files/pictures"     = "files\\"
+# # "C:/sun/files/security"     = "files\\"
+# # "C:/sun/files/software"     = "files\\"
+# # "C:/sun/files/video"        = "files\\"
+#
+#
+# [env_var.OWNER]
+# symbol  = "[](amber)"
+# style   = "fg:black bg:amber"
+# format  = "[$symbol $env_value ]($style)[](amber)"
+#
+# [character]
+# disabled                    = false
+# success_symbol              = "[](fg:blue bg:amber)[ ](bold fg:black bg:blue)"
+# error_symbol                = "[](fg:red bg:amber)[ ](bold fg:black bg:red)"
+# style                       = "fg:black bg:amber"
+# format                      = "[$symbol]($style)"
+#
+# [custom.git_icon]
+# command                     = "echo ''"
+# when                        = """ """
+# style                       = "fg:black bg:amber"
+# format                      = "[ $output ](fg:black bg:amber)[](fg:amber bg:blue)"
+#
+# [package]
+# disabled                    = false
+#
+# [time]
+# disabled                    = false
+# time_format                 = "%R"
+# format                      = "[[  $time ](fg:yellow bg:foam)]($style)"
+#
+# [custom.git_branch]
+# command                     = "$b = git branch --show-current; if(-not $b){ $b = '----' }; ' ' + $b.PadRight(4).Substring(0,4) + ' '"
+# when                        = true
+# style                       = "fg:black bg:blue"
+# format                      = "[ $output]($style)[](blue)"
+#
+#
+#
+# [git_branch]
+# style             = "fg:black bg:blue"
+# format            = "[ $branch]($style)[](blue)"
+# truncation_length = 4
+# truncation_symbol = ""
+#
+# [git_status]
+# format                      = "[$untracked$staged$modified$renamed$conflicted$ahead_behind]($style)"
+#
+# staged                      = "[+${count} ](green)"
+# modified                    = "[!${count} ](cream)"
+# renamed                     = "[»${count} ](blue)"
+# deleted                     = "[-${count} ](red)"
+# untracked                   = "[?${count} ](salmon)"
+# stashed                     = "[≡${count} ](purple)"
+# conflicted                  = "[✖${count} ](rose bold)"
+#
+# ahead                       = "[⇡${count} ](blue)"
+# behind                      = "[⇣${count} ](amber)"
+# diverged                    = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
+# style                       = "fg:black bg:blue"
+#
+#
+# [palettes.ayu_dark]
+# # --- blacks ---
+# pitch                       = "#00010a"
+# black                       = "#0a0e14"
+# darkblack                   = "#0d1016"
+# # --- grays ---
+# darkgray                    = "#1b2733"
+# charcoal                    = "#1d2214"
+# darkcharcoal                = "#2d2220"
+# gray1                       = "#242a35"
+# gray2                       = "#273747"
+# gray3                       = "#304357"
+# gray4                       = "#323945"
+# gray5                       = "#393f4d"
+# gray6                       = "#3e4b59"
+# gray7                       = "#464d5e"
+# gray8                       = "#4d5566"
+# gray9                       = "#626a73"
+# lightgray                   = "#b3b1ad"
+# white                       = "#cbccc6"
+# cream                       = "#ffee99"
+# red                         = "#ff3333"
+# salmon                      = "#f07178"
+# rose                        = "#d96c75"
+# orange                      = "#ff8f40"
+# peach                       = "#f29668"
+# coral                       = "#f28779"
+# yellow                      = "#ffcc66"
+# gold                        = "#e6b673"
+# amber                       = "#ffb454"
+# green                       = "#c2d94c"
+# moss                        = "#91b362"
+# darkgreen                   = "#1d2214"
+# teal                        = "#95e6cb"
+# steel                       = "#6994bf"
+# skyblue                     = "#39bae6"
+# blue                        = "#59c2ff"
+# purple                      = "#cb9ff8"
+# violet                      = "#d2a6ff"

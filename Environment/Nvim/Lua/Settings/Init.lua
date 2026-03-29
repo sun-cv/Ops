@@ -1,4 +1,4 @@
 
 
 
-require("Settings.Diagnostics.Config")
+require("settings.diagnostics.Config")

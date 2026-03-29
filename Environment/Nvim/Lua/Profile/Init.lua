@@ -1,5 +1,5 @@
 
 
-require("Profile.Config")
-require("Profile.Theme")
-require("Profile.Keybindings")
+require("profile.config")
+require("profile.theme")
+require("profile.keybindings")

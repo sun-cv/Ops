@@ -7,7 +7,7 @@ return {
     config = function()
         local alpha = require("alpha")
 
-        local module = require("Data.Graphics.Frames")
+        local module = require("data.graphics.frames")
 
         vim.api.nvim_set_hl(0, "AlphaHeader",  { fg = "#ffb454" })
         vim.api.nvim_set_hl(0, "AlphaButtons", { fg = "#45cde0" })

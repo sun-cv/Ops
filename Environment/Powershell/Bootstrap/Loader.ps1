@@ -1,14 +1,23 @@
 
 
 
-$EnvironmentPath = "C:\Ops\Environment\PowerShell"
+$EnvironmentPath    = "C:\sun\ops\environment\powershell"
 
-$Directories     = @("Helpers", "Profile")
-$ToolsPath       = Join-Path $EnvironmentPath "Tools"
+$Variables          = "EnvironmentVariables.ps1"
+$Directories        = @("profile", "functions", "modules")
+$ToolsPath          = Join-Path $EnvironmentPath "tools"
 
 if (-not (Test-Path $EnvironmentPath)) {
     Write-Warning "Environment path not found: $EnvironmentPath"
     return
+}
+
+Get-ChildItem -Path $EnvironmentPath -Filter $Variables -Recurse | ForEach-Object {
+    try {
+        . $_.FullName
+    } catch {
+        Write-Warning "Failed to load vars: $_"
+    }
 }
 
 foreach ($Directory in $Directories) {

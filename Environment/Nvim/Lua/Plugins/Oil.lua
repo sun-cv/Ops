@@ -13,6 +13,9 @@ return {
             keymaps = {
                 ["<Esc>"] = "actions.close",
             },
+            git = {
+                enabled = false,
+            },
             float = {
                 border = "none",
                 preview_split = "right",

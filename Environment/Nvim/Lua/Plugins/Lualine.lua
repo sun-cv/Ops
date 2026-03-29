@@ -7,20 +7,53 @@ return {
     config = function()
         require('lualine').setup({
             options = {
-                theme = 'ayu_dark',
-                component_separators = { left = '', right = '' },
-                section_separators = { left = '', right = '' },
-                globalstatus = false,
-				TabLine = { bg = 'None' },
-				TabLineFill = { bg = 'None' },
+                theme = {
+                    normal   = { a = { bg = '#59C2FF', fg = '#000000', gui = 'bold' },
+                                 b = { bg = 'NONE', fg = '#5A6378' },
+                                 c = { bg = 'NONE', fg = '#5A6378' } },
+                    insert   = { a = { bg = '#70BF56', fg = '#000000', gui = 'bold' },
+                                 b = { bg = 'NONE', fg = '#ffffff' },
+                                 c = { bg = 'NONE', fg = '#ffffff' } },
+                    visual   = { a = { bg = '#FFB454', fg = '#000000', gui = 'bold' },
+                                 b = { bg = 'NONE', fg = '#ffffff' },
+                                 c = { bg = 'NONE', fg = '#ffffff' } },
+                    replace  = { a = { bg = '#F07171', fg = '#000000', gui = 'bold' },
+                                 b = { bg = 'NONE', fg = '#ffffff' },
+                                 c = { bg = 'NONE', fg = '#ffffff' } },
+                    command  = { a = { bg = '#A37ACC', fg = '#000000', gui = 'bold' },
+                                 b = { bg = 'NONE', fg = '#5A6378' },
+                                 c = { bg = 'NONE', fg = '#5A6378' } },
+                    inactive = { a = { bg = '#ADAEB1', fg = '#888888' },
+                                 b = { bg = 'NONE', fg = '#5A6378' },
+                                 c = { bg = 'NONE', fg = '#5A6378' } },
+                },
+                component_separators    = { left = '', right = '' },
+                section_separators      = { left = '', right = '' },
+                globalstatus            = true,
+            },
+            refresh = {
+                statusline = 50,
             },
             sections = {
-                lualine_a = { 'mode' },
-                lualine_b = { 'branch', 'diff', 'diagnostics' },
-                lualine_c = {{ 'filename', path = 2 }},
-                lualine_x = { 'encoding', 'filetype' },
-                lualine_y = { 'progress' },
-                lualine_z = { 'location' },
+                lualine_a = {
+                    {
+                        'mode',
+                        separator = { left = '', right = '' },
+                        padding = { left = 3, right = 2 },
+                    },
+                },
+                lualine_b = { 'diagnostics' },
+                lualine_c = { },
+                lualine_x = { },
+                lualine_y = { },
+                lualine_z = {
+                    {
+                        'location',
+                        separator = { left = '', right = '' },
+                        padding = { left = 3, right = 2 },
+                    },
+                },
             },
-       })
-    end}
+        })
+    end
+}

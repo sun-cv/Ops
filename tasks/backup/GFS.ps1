@@ -5,14 +5,11 @@
 
 $mirrorRoot = "Z:\"
 $backupRoot = "X:\Backups"
-$logFile    = "C:\Logs\Tasks\GFS\Backup.log"
+$logFile    = "C:\sun\logs\tasks\gfs\Backup.log"
 
 $backupSources = @(
-    "Z:\Files"
-    "Z:\Documents",
-    "Z:\Dev",
-    "Z:\Ops"
-    "Z:\Backups",
+    "Z:\sun",
+    "Z:\documents"
 )
 
 $excludeDirs = @(
@@ -300,6 +297,6 @@ Remove-OldBackups "$backupRoot\Yearly"  $maxYearly
 Write-Host ""
 Write-Host "=== GFS Backup complete! ===" -ForegroundColor Green
 
-Get-Date | Out-File "C:\Ops\Logs\Automation\Tasks\GFS\COMPLETED.txt" -Force
+Get-Date | Out-File "C:\sun\logs\tasks\gfs\COMPLETED.txt" -Force
 
 exit 0

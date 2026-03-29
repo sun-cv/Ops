@@ -1,18 +1,19 @@
 
 
+
+vim.lsp.config("roslyn", {
+  settings = {
+    ["csharp|background_analysis"] = {
+      dotnet_analyzer_diagnostics_scope = "openFiles",
+      dotnet_compiler_diagnostics_scope = "openFiles",
+    },
+  },
+})
+
 return {
-  "seblj/roslyn.nvim",
+  "seblyng/roslyn.nvim",
   ft = "cs",
-  config = function()
-    require("roslyn").setup({
-      config = {
-        settings = {
-          ["csharp|background_analysis"] = {
-            dotnet_analyzer_diagnostics_scope = "fullSolution",
-            dotnet_compiler_diagnostics_scope = "fullSolution",
-          },
-        },
-      },
-    })
-  end,
-}  
+  opts = {
+    filewatching = "roslyn",
+  },
+}

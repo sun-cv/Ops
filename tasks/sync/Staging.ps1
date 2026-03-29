@@ -3,16 +3,13 @@
 # ---------------------------
 
 $sourceFolders = @(
-    "C:\Users\sun\Files",
     "C:\Users\sun\Documents",
-    "C:\Dev",
-    "C:\Ops"
-    "C:\Backups"
+    "C:\sun"
 )
 
 $syncRoot = "Z:\"
-$logFile  = "C:\Logs\Tasks\GFS\SyncStaging.log"
-$errorLog = "C:\Logs\Tasks\GFS\SyncStagingErrors.log"
+$logFile  = "C:\sun\logs\tasks\gfs\SyncStaging.log"
+$errorLog = "C:\sun\logs\tasks\gfs\SyncStagingErrors.log"
 
 $excludeFiles = @(
     "*.tmp",
