@@ -1,6 +1,6 @@
 Write-Host "Starting PM2 Ecosystem..." -ForegroundColor Green
 
-Set-Location "C:\sun\ops\services\PM2"
+Set-Location Join-Path $env: DIR_OPS "\services\PM2"
 
 pm2 start ecosystem.config.js
 pm2 save

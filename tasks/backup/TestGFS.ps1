@@ -12,16 +12,15 @@ Write-Host ""
 # Config
 # ----------------------------
 $sourceFolders = @(
-    "C:\sun\files",
-    "C:\sun\dev",
-    "C:\sun\ops",
-    "C:\sun\backups"
+    $env:DIR_FILES,
+    $env:DIR_DEV,
+    $env:DIR_OPS,
+    $env:DIR_BACKUPS
 )
+$mirrorRoot  = "Z:\"
+$backupRoot  = "X:\System\Backups"
 
-$mirrorRoot     = "Z:\"
-$backupRoot     = "X:\Backups"
-
-$logFile = "C:\sun\logs\tasks\GFSBackup\BackupTest.log"
+$logFile        = Join-Path $env:DIR_LOGS "tasks\GFSBackup\BackupTest.log"
 
 # ----------------------------
 # Pre-flight checks

@@ -3,14 +3,14 @@
 # ----------------------------
 
 $mirrorRoot = "Z:\"
-$backupRoot = "X:\Backups"
-$logFile    = "C:\Logs\Tasks\VerifyGFS.log"
+$backupRoot = "X:\System\Backups"
+$logFile    = Join-Path $env:DIR_LOGS "tasks\VerifyGFS.log"
 
 $backupSources = @(
-    @{ Source = "Z:\Files";     Name = "Files" },
-    @{ Source = "Z:\Dev";       Name = "dev" },
-    @{ Source = "Z:\Ops";       Name = "ops" }
-    @{ Source = "Z:\Backups";   Name = "ops" }
+    @{ Source = "Z:\Files";                 Name = "Files" },
+    @{ Source = "Z:\Sun\Dev";               Name = "Dev" },
+    @{ Source = "Z:\Sun\Ops";               Name = "Ops" }
+    @{ Source = "Z:\Sun\System\Backups";    Name = "Backups" }
 )
 
 #  Critical files or paths to verify existence in backup

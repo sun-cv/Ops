@@ -4,12 +4,12 @@
 
 $sourceFolders = @(
     "C:\Users\sun\Documents",
-    "C:\sun"
+    $env:DIR_SUN
 )
 
 $syncRoot = "Z:\"
-$logFile  = "C:\sun\logs\tasks\gfs\SyncStaging.log"
-$errorLog = "C:\sun\logs\tasks\gfs\SyncStagingErrors.log"
+$logFile  = Join-Path $env:DIR_LOGS "tasks\gfs\SyncStaging.log"
+$errorLog = Join-Path $env:DIR_LOGS "tasks\gfs\SyncStagingErrors.log"
 
 $excludeFiles = @(
     "*.tmp",
@@ -34,7 +34,8 @@ $excludeDirs = @(
     ".vscode",
     "Build",
     "Builds",
-    "Logs"
+    "Logs",
+    "Library"
 )
 
 $logDir = Split-Path $logFile -Parent

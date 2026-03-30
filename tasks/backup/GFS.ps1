@@ -4,8 +4,8 @@
 # ----------------------------
 
 $mirrorRoot = "Z:\"
-$backupRoot = "X:\Backups"
-$logFile    = "C:\sun\logs\tasks\gfs\Backup.log"
+$backupRoot = "X:\System\Backups"
+$logFile    = Join-Path $env:DIR_LOGS "tasks\gfs\Backup.log"
 
 $backupSources = @(
     "Z:\sun",

@@ -1,0 +1,182 @@
+scan_timeout                = 100
+command_timeout             = 100
+add_newline                 = true
+
+palette                     = "ayu_dark"
+
+
+format = """
+${env_var.OWNER}$character$directory${env_var.GIT_SPACER}${env_var.GIT_BRANCH}\u001b7\
+$fill $git_status\
+\u001b8\
+"""
+
+[line_break] 
+disabled                    = true
+
+[fill]
+symbol                      = " "
+
+[env_var.OWNER]
+symbol                      = "[](orange_l3)"
+style                       = "fg:black bg:orange_l3"
+format                      = "[$symbol $env_value ]($style)"
+
+[character]
+disabled                    = false
+success_symbol              = "[](fg:orange_l5 bg:orange_l3)[](bg:orange_l5)[](bold fg:orange_l5)"
+error_symbol                = "[](fg:error bg:orange_l3)[](bg:error)[](bold fg:error)"
+format                      = "[$symbol]($style)"
+
+[directory]
+style                       = "fg:black bg:blue_l3"
+format                      = "[[](fg:blue_l1)  ](fg:black bg:blue_l1)[](fg:blue_l1 bg:blue_l3)[ $path ]($style)[](fg:blue_l3)[](fg:blue_l3)"
+truncation_length           = 1
+truncate_to_repo            = false
+use_logical_path            = true
+
+[directory.substitutions]
+
+"C:/sun/dev"                = "dev"
+"C:/sun/ops"                = "ops" 
+"C:/sun/files/assets"       = "assets"
+"C:/sun/files/collections"  = "collections"
+"C:/sun/files/documents"    = "documents"
+"C:/sun/files/downloads"    = "downloads"
+"C:/sun/files/games"        = "games"
+"C:/sun/files/music"        = "games"
+"C:/sun/files/notes"        = "notes"
+"C:/sun/files/pictures"     = "pictures"
+"C:/sun/files/security"     = "security"
+"C:/sun/files/software"     = "software"
+"C:/sun/files/video"        = "video"
+"C:/sun"                    = "sun"
+
+[env_var.GIT_SPACER]
+variable                    = "GIT_SPACER"
+format                      = "[$env_value]()"
+
+[env_var.GIT_BRANCH]
+variable                    = "GIT_BRANCH"
+style                       = "fg:black bg:red_l4"
+format                      = "[[](fg:red_l2)  ](fg:black bg:red_l2)[](fg:red_l2 bg:red_l4)[ $env_value ]($style)[](red_l4) "
+
+[git_status]
+staged                      = "[+${count} ](fg:string   bg:bg)"
+modified                    = "[!${count} ](fg:func     bg:bg)"
+renamed                     = "[»${count} ](fg:entity   bg:bg)"
+deleted                     = "[-${count} ](fg:markup   bg:bg)"
+untracked                   = "[?${count} ](fg:comment  bg:bg)"
+stashed                     = "[≡${count} ](fg:constant bg:bg)"
+conflicted                  = "[✖${count} ](fg:error    bg:bg)"
+
+ahead                       = "[⇡${count} ](blue)"
+behind                      = "[⇣${count} ](amber)"
+diverged                    = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
+
+style                       = "fg:black bg:bg"
+format                      = "[](bg)[ $untracked$staged$modified$renamed$conflicted$ahead_behind]($style)[](bg)"
+
+
+[palettes.ayu_dark]
+# --- PALETTE ---
+# red
+red_l1      = "#ef616b"
+red_l2      = "#f07178"   # syntax: markup
+red_l3      = "#f39193"
+red_l4      = "#f6adae"
+red_l5      = "#f9c8c7"
+
+# pink (operator)
+pink_l1     = "#e1753a"
+pink_l2     = "#ed834b"
+pink_l3     = "#f29668"   # syntax: operator
+pink_l4     = "#f6b18f"
+pink_l5     = "#facab3"
+
+# orange (keyword)
+orange_l1   = "#e5730e"
+orange_l2   = "#f67e1a"
+orange_l3   = "#ff8f40"   # syntax: keyword ← the "real" orange
+orange_l4   = "#ffad7a"
+orange_l5   = "#ffc9a8"
+
+# peach (special)
+peach_l1    = "#b09165"
+peach_l2    = "#c2a070"
+peach_l3    = "#d5b07c"
+peach_l4    = "#e6c08a"   # syntax: special
+peach_l5    = "#f0d1a5"
+
+# yellow (func/amber)
+yellow_l1   = "#c8872d"
+yellow_l2   = "#dc9534"
+yellow_l3   = "#f0a33a"
+yellow_l4   = "#ffb454"   # syntax: func ← your "amber"
+yellow_l5   = "#ffcb8f"
+
+# green (string)
+green_l1    = "#81a637"
+green_l2    = "#8eb73e"
+green_l3    = "#9cc845"
+green_l4    = "#aad94c"   # syntax: string
+green_l5    = "#b8eb53"
+
+# teal (regexp)
+teal_l1     = "#69a591"
+teal_l2     = "#74b59f"
+teal_l3     = "#7fc5ae"
+teal_l4     = "#8ad5bc"
+teal_l5     = "#95e6cb"   # syntax: regexp
+
+# indigo (tag)
+indigo_l1   = "#30a5cc"
+indigo_l2   = "#39bae6"   # syntax: tag
+indigo_l3   = "#4cc9f5"
+indigo_l4   = "#6dd6ff"
+indigo_l5   = "#9ae2ff"
+
+# blue (entity)
+blue_l1     = "#05a2e5"
+blue_l2     = "#2eb2f6"
+blue_l3     = "#59c2ff"   # syntax: entity
+blue_l4     = "#85d0ff"
+blue_l5     = "#aadeff"
+
+# gray
+gray_l1     = "#333b44"
+gray_l2     = "#404953"
+gray_l3     = "#4d5763"
+gray_l4     = "#5a6673"   # syntax: comment
+gray_l5     = "#667381"
+
+# purple (constant)
+purple_l1   = "#b969fd"
+purple_l2   = "#c589fe"
+purple_l3   = "#d2a6ff"   # syntax: constant
+purple_l4   = "#dab8ff"
+purple_l5   = "#e3c9ff"
+
+# --- SYNTAX ---
+tag         = "#39bae6"
+func        = "#ffb454"
+entity      = "#59c2ff"
+string      = "#aad94c"
+regexp      = "#95e6cb"
+markup      = "#f07178"
+keyword     = "#ff8f40"
+special     = "#e6c08a"
+comment     = "#5a6673"
+constant    = "#d2a6ff"
+operator    = "#f29668"
+
+# --- VCS ---
+vcs_added   = "#70bf56"
+vcs_modified= "#73b8ff"
+vcs_removed = "#f26d78"
+
+# --- UI ---
+fg          = "#bfbdb6"
+bg          = "#0d1017"
+accent      = "#e6b450"
+error       = "#d95757"
