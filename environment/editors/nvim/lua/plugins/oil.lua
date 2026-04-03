@@ -30,9 +30,6 @@ return {
                     return vim.startswith(name, '.')
                 end,
                 is_always_hidden = function(name, bufnr)
-                    return name == 'meta' or vim.endswith(name, '.meta')
-                end,
-                is_always_hidden = function(name, bufnr)
                     return name == 'meta' or vim.endswith(name, '.meta') or name == 'Documents and Settings'
                 end,
             },

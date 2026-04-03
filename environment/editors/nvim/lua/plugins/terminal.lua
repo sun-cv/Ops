@@ -7,7 +7,7 @@ return
     opts = {
         open_mapping    = [[<c-\>]],
         direction       = 'horizontal',
-        float_opts      = 
+        float_opts      =
         {
             border      = 'curved',
         },
