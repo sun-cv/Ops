@@ -1,7 +1,7 @@
 
 function coffee
 {
-    & $(join-path $env:DIR_AUDIO "music/coffee.mp4")
+    & $(join-path $env:DIR_AUDIO "music/artist/cosmic_hippo/coffee.mp4")
     clear
 }
 

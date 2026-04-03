@@ -1,6 +1,10 @@
 
 
 
+local indicator_saved       = require("components.indicatorSave"); 
+local indicator_recording   = require("components.indicatorRecording"); 
+
+
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -38,14 +42,14 @@ return {
                 lualine_a = {
                     {
                         'mode',
-                        separator = { left = '', right = '' },
-                        padding = { left = 3, right = 2 },
+                        separator   = { left = '', right = '' },
+                        padding     = { left = 3,   right = 2   },
                     },
                 },
                 lualine_b = { 'diagnostics' },
-                lualine_c = { },
+                lualine_c = {{ indicator_recording.component }},
                 lualine_x = { },
-                lualine_y = { },
+                lualine_y = {{ indicator_saved.component }},
                 lualine_z = {
                     {
                         'location',

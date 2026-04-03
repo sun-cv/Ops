@@ -28,6 +28,10 @@ return {
                 hover = {
                     enabled = false,
                 },
+                progress =
+                {
+                    enabled = false,
+                }
             },
             notify = {
                 enabled = false,

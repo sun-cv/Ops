@@ -12,5 +12,4 @@ precmd() {
         unset GIT_BRANCH
     fi
 }
-
 eval "$(starship init zsh)"

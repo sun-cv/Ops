@@ -26,6 +26,15 @@ function env
     cd $env:DIR_ENVIRONMENT
 }
 
+function windows
+{
+    cd $env:DIR_WINDOWS
+}
+
+function linux
+{
+    cd $env:DIR_LINUX
+}
 function gg
 {
     cd F:/

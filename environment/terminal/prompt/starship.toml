@@ -6,8 +6,8 @@ palette                     = "ayu_dark"
 
 
 format = """
-${env_var.OWNER}$character$directory${env_var.GIT_SPACER}${env_var.GIT_BRANCH}\u001b7\
-$fill $git_status\
+$os${env_var.OWNER}$character$directory${env_var.GIT_SPACER}${env_var.GIT_BRANCH}\u001b7\
+$fill ${env_var.GIT_STATUS}\
 \u001b8\
 """
 
@@ -18,13 +18,22 @@ disabled                    = true
 symbol                      = " "
 
 [env_var.OWNER]
-symbol                      = "[](orange_l3)"
+symbol                      = "[](fg:orange_l3)"
 style                       = "fg:black bg:orange_l3"
-format                      = "[$symbol $env_value ]($style)"
+format                      = "[$symbol $env_value]($style)"
+
+[os]
+disabled                    = false
+style                       = "fg:black bg:constant"
+format                      = "[](fg:purple_l1)[](fg:purple_l3 bg:purple_l1)[$symbol ]($style)[](fg:purple_l3)"
+
+[os.symbols]
+Windows                     = ""
+Arch                        = "󰣇"
 
 [character]
 disabled                    = false
-success_symbol              = "[](fg:orange_l5 bg:orange_l3)[](bg:orange_l5)[](bold fg:orange_l5)"
+success_symbol              = "[](fg:orange_l3 bg:orange_l3)[](bg:orange_l3)[](bold fg:orange_l3)"
 error_symbol                = "[](fg:error bg:orange_l3)[](bg:error)[](bold fg:error)"
 format                      = "[$symbol]($style)"
 
@@ -61,23 +70,27 @@ variable                    = "GIT_BRANCH"
 style                       = "fg:black bg:red_l4"
 format                      = "[[](fg:red_l2)  ](fg:black bg:red_l2)[](fg:red_l2 bg:red_l4)[ $env_value ]($style)[](red_l4) "
 
-[git_status]
-staged                      = "[+${count} ](fg:string   bg:bg)"
-modified                    = "[!${count} ](fg:func     bg:bg)"
-renamed                     = "[»${count} ](fg:entity   bg:bg)"
-deleted                     = "[-${count} ](fg:markup   bg:bg)"
-untracked                   = "[?${count} ](fg:comment  bg:bg)"
-stashed                     = "[≡${count} ](fg:constant bg:bg)"
-conflicted                  = "[✖${count} ](fg:error    bg:bg)"
+[env_var.GIT_STATUS]
+variable                    = "GIT_STATUS"
+format                      = "[](fg:bg)[ $env_value](bg:bg)[](fg:bg)"
 
-ahead                       = "[⇡${count} ](blue)"
-behind                      = "[⇣${count} ](amber)"
-diverged                    = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
-
-style                       = "fg:black bg:bg"
-format                      = "[](bg)[ $untracked$staged$modified$renamed$conflicted$ahead_behind]($style)[](bg)"
-
-
+# [git_status]
+# staged                      = "[+${count} ](fg:string   bg:bg)"
+# modified                    = "[!${count} ](fg:func     bg:bg)"
+# renamed                     = "[»${count} ](fg:entity   bg:bg)"
+# deleted                     = "[-${count} ](fg:markup   bg:bg)"
+# untracked                   = "[?${count} ](fg:comment  bg:bg)"
+# stashed                     = "[≡${count} ](fg:constant bg:bg)"
+# conflicted                  = "[✖${count} ](fg:error    bg:bg)"
+#
+# ahead                       = "[⇡${count} ](blue)"
+# behind                      = "[⇣${count} ](amber)"
+# diverged                    = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
+#
+# style                       = "fg:black bg:bg"
+# format                      = "[](bg)[ $untracked$staged$modified$renamed$conflicted$ahead_behind]($style)[](bg)"
+#
+#
 [palettes.ayu_dark]
 # --- PALETTE ---
 # red

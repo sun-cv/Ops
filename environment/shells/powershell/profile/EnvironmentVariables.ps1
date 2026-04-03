@@ -12,6 +12,9 @@ $env:DIR_FILES          = "C:\sun\files"
 $env:DIR_LOGS           = "C:\sun\system\logs"
 $env:DIR_BACKUPS        = "C:\sun\system\backups"
 $env:DIR_ENVIRONMENT    = "C:\sun\ops\environment"
+$env:DIR_WINDOWS        = "C:\sun\ops\environment\platform\windows"
+$env:DIR_LINUX          = "C:\sun\ops\environment\platform\linux"
+
 
 
 $env:DIR_AUDIO          = "C:\sun\media\audio"

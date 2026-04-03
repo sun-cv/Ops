@@ -37,12 +37,14 @@ vim.keymap.set({ "n", "v", "x" }, "<S-j>", function() smooth.scroll(   5, { move
 vim.keymap.set({ "n", "v", "x" }, "zt",    function() smooth.zt({ half_win_duration = 50 }) end,                        { desc = "Scroll top of screen" })
 vim.keymap.set({ "n", "v", "x" }, "zz",    function() smooth.zz({ half_win_duration = 50 }) end,                        { desc = "Scroll center screen" })
 vim.keymap.set({ "n", "v", "x" }, "zb",    function() smooth.zb({ half_win_duration = 50 }) end,                        { desc = "Scroll bottom screen" })
+
 -- Buffer
 keymap.add({ "<leader>b", group = "Buffer" })
 vim.keymap.set("n", "<Tab>",      "<cmd>BufferNext<cr>",                                                                { desc = "Next buffer"          })
 vim.keymap.set("n", "<S-Tab>",    "<cmd>BufferPrevious<cr>",     	                                                    { desc = "Prev buffer"          })
-vim.keymap.set("n", "<leader>bb", "<cmd>BufferClose<cr>",                                                               { desc = "Close buffer"         })
-vim.keymap.set("n", "<leader>bd", function() vim.cmd("Alpha") end,                                                      { desc = "Dashboard" } )
+vim.keymap.set("n", "<leader>bb", function() vim.cmd("write") vim.cmd("BufferClose") end,                               { desc = "Close buffer"         })
+vim.keymap.set("n", "<leader>bd", function() vim.cmd("Alpha") end,                                                      { desc = "Dashboard"            })
+
 
 -- Harpoon
 keymap.add({ "<leaderh>", group = "harpoon" })
@@ -85,20 +87,21 @@ vim.keymap.set("n", "<leader>sv",   '<C-v>',                                    
 
 -- Comments
 keymap.add({ "<leader>c", group = "Comment" })
-vim.keymap.set("n", "<leader>cc",   "<cmd>normal gcc<cr>",                                                              { desc = "Toggle line comment"  })
-vim.keymap.set("n", "<leader>cb",   "<cmd>normal gbc<cr>",                                                              { desc = "Toggle block comment" })
 vim.keymap.set("v", "<leader>cc",   "<cmd>normal gcc<cr>",                                                              { desc = "Toggle line comment"  })
 vim.keymap.set("v", "<leader>cb",   "<cmd>normal gbc<cr>",                                                              { desc = "Toggle block comment" })
+vim.keymap.set("n", "<leader>cc",   "<cmd>normal gcc<cr>",                                                              { desc = "Toggle line comment"  })
+vim.keymap.set("n", "<leader>cb",   "<cmd>normal gbc<cr>",                                                              { desc = "Toggle block comment" })
 
 -- Selection movement
-vim.keymap.set("v", "<S-j>", ":m '>+1<CR>gv=gv",                                                                        { desc = "Move selection down", silent = true, noremap = true })
-vim.keymap.set("v", "<S-k>", ":m '<-2<CR>gv=gv",                                                                        { desc = "Move selection up",   silent = true, noremap = true })
+vim.keymap.set("v", "<S-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down", silent = true, noremap = true })
+vim.keymap.set("v", "<S-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up",   silent = true, noremap = true })
 
 -- Error handling
 keymap.add({ "<leader>e", group = "Errors" })
 vim.keymap.set("n", "<leader>ee",  vim.diagnostic.open_float,                                                           { desc = "Show error"           })
 vim.keymap.set("n", "<leader>ek",  function() vim.diagnostic.jump({ count = -1 }) end,                                  { desc = "Previous diagnostic"  })
 vim.keymap.set("n", "<leader>ej",  function() vim.diagnostic.jump({ count =  1 }) end,                                  { desc = "Next diagnostic"      })
+vim.keymap.set("n", "<leader>ea", vim.lsp.buf.code_action,                                                              { desc = "Code actions"         })
 
 -- Undo
 keymap.add({ "<leader>u", group = "Undo" })

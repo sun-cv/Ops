@@ -17,11 +17,11 @@ vim.opt.smartcase                       = true
 vim.opt.signcolumn 		                = "yes"
 vim.opt.swapfile 		                = false
 vim.opt.showmode 		                = false
-vim.opt.cmdheight 		                = 0;
 vim.opt.timeoutlen                      = 300
+vim.opt.updatetime                      = 500
+vim.opt.cmdheight                       = 0
 vim.opt.shortmess 		                = "filnxtToOFsIc"
 vim.opt.fillchars                       :append({ eob = ' ' })      -- Replace the ~ symbols shown on empty lines after end-of-file with a space (cleaner look)
-
 
 vim.g.undotree_SplitWidth               = 40                        -- Undotree panel width in columns
 vim.g.undotree_SetFocusWhenToggle       =  1                        -- Automatically focus the undotree panel when you open it
@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd('User', {
     pattern = 'VMEnter',
     callback = function()
         vim.lsp.inlay_hint.enable(false)
-        vim.diagnostic.disable()
+        vim.diagnostic.enable(false)
     end
 })
 
