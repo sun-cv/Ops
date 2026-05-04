@@ -4,8 +4,8 @@
 return {
     {
         "mason-org/mason.nvim",
-        lazy = true,
-        config = function()
+        lazy    = true,
+        config  = function()
             require("mason").setup({
                 registries = {
                     "github:Crashdummyy/mason-registry",
@@ -16,29 +16,29 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        dependencies = { "mason-org/mason.nvim" },
-        config = function()
+        dependencies    = { "mason-org/mason.nvim" },
+        config          = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "ts_ls", "eslint", "lua_ls" },
-                automatic_installation = true,
+                ensure_installed        = { "ts_ls", "eslint", "lua_ls", "pyright" },
+                automatic_installation  = true,
             })
         end,
     },
     {
         "seblyng/roslyn.nvim",
-        ft = "cs",
-        lazy = false,
-        opts = {
-            filewatching = "off",
-            broad_search = false,
-            lock_target = true,
+        ft      = "cs",
+        lazy    = false,
+        opts    = {
+            filewatching    = "off",
+            broad_search    = false,
+            lock_target     = true,
         },
-        config = function(_, opts)
-            require("roslyn").setup(opts)
+        config  = function(_, opts)
+             require("roslyn").setup(opts)
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = "cs",
-                once = true,
-                callback = function()
+                pattern     = "cs",
+                once        = true,
+                callback    = function()
                     vim.defer_fn(function()
                         vim.cmd("Roslyn restart")
                     end, 3000)
@@ -62,17 +62,28 @@ return {
                 },
             })
             vim.lsp.config("lua_ls", {
-                settings = {
-                    Lua = {
+                settings    = {
+                    Lua     = {
                         diagnostics = { globals = { "vim", "require" } },
-                        workspace = {
+                        workspace   = {
                             library = vim.api.nvim_get_runtime_file("", true),
                             checkThirdParty = false,
                         },
                     },
                 },
             })
-            vim.lsp.enable({"lua_ls", "roslyn" })
+            vim.lsp.config("pyright", {
+                settings    = {
+                    python  = {
+                        analysis    = {
+                            typeCheckingMode        = "basic",
+                            autoSearchPaths         = true,
+                            useLibraryCodeForTypes  = true,
+                        },
+                    },
+                },
+            })
+            vim.lsp.enable({"lua_ls", "roslyn", "pyright" })
         end,
     },
 }

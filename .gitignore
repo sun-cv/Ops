@@ -1,4 +1,18 @@
 
 
+
 /Backups
 /Logs
+/environment/editors/vscode/
+/environment/ai/claude/file-history/
+/environment/ai/claude/projects
+
+.claude/cache/
+.claude/history.jsonl
+.claude/sessions/
+.claude/shell-snapshots/
+.claude/backups/
+.claude/projects/
+.claude/.credentials.json
+.claude/mcp-needs-auth-cache.json
+.claude/ide/

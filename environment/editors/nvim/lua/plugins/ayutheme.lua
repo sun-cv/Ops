@@ -34,11 +34,11 @@ return {
                 -- Current (active) buffer
                 BufferCurrent               = { bg = "None", fg = "#cbccc6" },
                 BufferCurrentIcon           = { bg = "None", fg = "#FFB454" },
-                BufferCurrentMod            = { bg = "None", fg = "#f28779" },  -- unsaved, active
+                BufferCurrentMod            = { bg = "None", fg = "#f28779" },
                 BufferCurrentModIcon        = { bg = "None", fg = "#f28779" },
                 BufferCurrentBtn            = { bg = "None", fg = "#5A6378" },
                 BufferCurrentSign           = { bg = "None", fg = "#ffcc66" },
-                BufferCurrentTarget         = { bg = "None", fg = "#ffcc66" },  -- jump letter
+                BufferCurrentTarget         = { bg = "None", fg = "#ffcc66" },
 
                 -- Visible (in split, not focused)
                 BufferVisible               = { bg = "None", fg = "#cbccc6" },

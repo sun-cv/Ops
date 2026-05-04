@@ -13,5 +13,7 @@ return
         },
         shell           = 'pwsh',
         size            = 15,
+        shading_factor  = 0,
+        winblend        = 0,
     }
 }

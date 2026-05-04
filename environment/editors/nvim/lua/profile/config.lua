@@ -21,15 +21,23 @@ vim.opt.timeoutlen                      = 300
 vim.opt.updatetime                      = 500
 vim.opt.cmdheight                       = 0
 vim.opt.shortmess 		                = "filnxtToOFsIc"
-vim.opt.fillchars                       :append({ eob = ' ' })      -- Replace the ~ symbols shown on empty lines after end-of-file with a space (cleaner look)
+vim.opt.fillchars                       :append({ eob = ' ' })
 
-vim.g.undotree_SplitWidth               = 40                        -- Undotree panel width in columns
-vim.g.undotree_SetFocusWhenToggle       =  1                        -- Automatically focus the undotree panel when you open it
+vim.g.undotree_SplitWidth               = 40
+vim.g.undotree_SetFocusWhenToggle       =  1
 
+-- vim.lsp.document_color.enable(false)
 
-vim.lsp.handlers["textDocument/hover"]  = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false, silent = true })    -- Prevent the hover documentation popup from being focusable
-vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.highlight.on_yank() end })                      -- Briefly highlight yanked text so you can see what was copied
-vim.lsp.config("lua_ls", { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) }}}})   -- Tell lua_ls about all Neovim's runtime files so it stops flagging vim.* APIs as unknown
+vim.lsp.handlers["textDocument/hover"] = function(_, _, _, config)
+  config = config or {}
+  config.focusable = false
+  config.silent = true
+  return vim.lsp.buf.hover()
+end -- Prevent the hover documentation popup from being focusable
+
+vim.api.nvim_create_autocmd("TextYankPost", { callback = function() vim.highlight.on_yank() end })
+
+vim.lsp.config("lua_ls", { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) }}}})
 
 
 -- vim.api.nvim_create_autocmd("VimLeave", {

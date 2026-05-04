@@ -1,8 +1,8 @@
 
 
 
-local indicator_saved       = require("components.indicatorSave"); 
-local indicator_recording   = require("components.indicatorRecording"); 
+local saving    = require("components.savingindicator");
+local recording = require("components.recordingindicator");
 
 
 return {
@@ -47,9 +47,9 @@ return {
                     },
                 },
                 lualine_b = { 'diagnostics' },
-                lualine_c = {{ indicator_recording.component }},
+                lualine_c = {{ recording.component }},
                 lualine_x = { },
-                lualine_y = {{ indicator_saved.component }},
+                lualine_y = {{ saving.component }},
                 lualine_z = {
                     {
                         'location',

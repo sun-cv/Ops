@@ -11,8 +11,8 @@ function nvim
     while ($true) {
         $tcp = New-Object System.Net.Sockets.TcpClient
         try {
-            $result = $tcp.BeginConnect("127.0.0.1", $port, $null, $null)
-            $success = $result.AsyncWaitHandle.WaitOne(50)  # 50ms timeout
+            $result     = $tcp.BeginConnect("127.0.0.1", $port, $null, $null)
+            $success    = $result.AsyncWaitHandle.WaitOne(50)
             if ($success -and $tcp.Connected) {
                 $tcp.Close()
                 $port++
