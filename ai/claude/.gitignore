@@ -1,0 +1,22 @@
+# Fail-safe allowlist for the Claude config dir.
+#
+# Ignore EVERYTHING here by default, then re-include only the curated config we track.
+# Claude writes secrets (.credentials.json) and runtime state into the live ~/.claude;
+# after the source/runtime split (scripts/link.ps1) those live outside this repo entirely,
+# but this allowlist guarantees that even if the live dir is ever pointed back at this
+# path, no secret or runtime artifact can be committed. New runtime files are ignored by
+# default — only things added below are tracked. See README.md.
+
+/*
+
+!.gitignore
+!README.md
+!CLAUDE.md
+!settings.json
+!instructions/
+!skills/
+!agents/
+!commands/
+!hooks/
+!output-styles/
+!scripts/

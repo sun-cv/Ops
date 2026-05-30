@@ -21,11 +21,6 @@ function ops
     cd $env:DIR_OPS
 }
 
-function env
-{
-    cd $env:DIR_ENVIRONMENT
-}
-
 function windows
 {
     cd $env:DIR_WINDOWS
@@ -52,18 +47,6 @@ function archive
 
 function momentum
 {
-    cd C:/sun/dev/projects/momentum
-    nvim
-}
-
-function config-nvim
-{
-    cd C:/sun/ops/environment/editors/nvim
-    nvim
-}
-
-function config-powershell
-{
-    cd C:/sun/ops/environment/shells/powershell
+    cd $env:CMD_MOMENTUM
     nvim
 }

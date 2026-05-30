@@ -4,7 +4,7 @@
 function nvim 
 {
     $basePort   = 9999
-    $portFile   = "C:\sun\ops\environment\editors\nvim\lua\data\unity\nvim-port.txt"
+    $portFile   = "C:\sun\ops\editors\nvim\lua\data\unity\nvim-port.txt"
 
     $port       = $basePort
 

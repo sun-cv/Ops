@@ -1,7 +1,7 @@
 
 
 
-$EnvironmentPath = "C:\sun\ops\environment\shells\powershell"
+$EnvironmentPath = "C:\sun\ops\shells\powershell"
 $Variables       = "EnvironmentVariables.ps1"
 $Directories     = @("profile", "functions", "modules", "integrations")
 $ToolsPath       = Join-Path $EnvironmentPath "tools"

@@ -1,18 +1,7 @@
-
-
-
 /Backups
 /Logs
-/environment/editors/vscode/
-/environment/ai/claude/file-history/
-/environment/ai/claude/projects
+/editors/vscode/
 
-.claude/cache/
-.claude/history.jsonl
-.claude/sessions/
-.claude/shell-snapshots/
-.claude/backups/
-.claude/projects/
-.claude/.credentials.json
-.claude/mcp-needs-auth-cache.json
-.claude/ide/
+# Claude config: runtime state and secrets are handled by ai/claude/.gitignore
+# (a fail-safe allowlist). The live config dir is a real ~/.claude outside this repo.
+# See ai/claude/README.md for the source-vs-runtime model.
