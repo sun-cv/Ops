@@ -29,7 +29,7 @@ return {
         ft      = "cs",
         lazy    = false,
         opts    = {
-            filewatching    = "off",
+            filewatching    = "roslyn",
             broad_search    = false,
             lock_target     = true,
         },

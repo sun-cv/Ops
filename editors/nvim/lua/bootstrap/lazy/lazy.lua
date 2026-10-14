@@ -28,7 +28,7 @@ require("lazy").setup({
     change_detection = {
         notify = false,
     },
-    lockfile    = vim.fn.stdpath("config") .. "lua/config/lazy/lazy-lock.json",
+    lockfile    = vim.fn.stdpath("config") .. "/lua/bootstrap/lazy/lazy-lock.json",
     install     = { colorscheme = { "Ayu" } },
     checker     = { enabled = false },
 })

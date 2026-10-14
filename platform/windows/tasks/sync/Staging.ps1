@@ -4,6 +4,7 @@
 
 $sourceFolders = @(
     "C:\Users\sun\Documents",
+    "C:\Users\Sun\Zomboid",
     $env:DIR_SUN
 )
 

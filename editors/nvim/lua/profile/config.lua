@@ -48,12 +48,12 @@ vim.lsp.config("lua_ls", { settings = { Lua = { workspace = { library = vim.api.
 
 
 -- Disable auto-continuation of comments when pressing Enter or o/O in any filetype.
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "*",
-    callback = function()
-        vim.opt_local.formatoptions:remove({ "c", "r", "o" }) -- 'c' = wrap comments, 'r' = continue on Enter, 'o' = continue on o/O
-    end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "*",
+--     callback = function()
+--         vim.opt_local.formatoptions:remove({ "c", "r", "o" }) -- 'c' = wrap comments, 'r' = continue on Enter, 'o' = continue on o/O
+--     end,
+-- })
 
 -- Visual Multi (multi-cursor) enters: turn off inlay hints and diagnostics to reduce noise
 vim.api.nvim_create_autocmd('User', {
